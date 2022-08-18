@@ -8,27 +8,22 @@
 </head>
 <body>
     <script>
-        const nums = [0,0,1]
+       const nums = [1,2,3,4]
 
-        const moveZeros = (nums) => {
-            let zeros = 0
-            
-            for(let i = 0; i < nums.length; i++){
-                if(nums[i] === 0){
-                    nums.splice(i, 1)
-                    zeros++
-                    i--
+       const containsDuplicates = nums => {
+            const duplicates = []
+            for( let i = 0; i < nums.length; i++){
+                if(duplicates.includes(nums[i])){
+                    return true
+                } else {
+                    duplicates.push(nums[i])
                 }
             }
 
-            for(let j = 0; j < zeros; j++){
-                nums.push(0)
-            }
+            return false
+       }
 
-            console.log(nums)
-        }
-
-        moveZeros(nums)
+       containsDuplicates(nums)
     </script>
 </body>
 </html>
