@@ -8,32 +8,25 @@
 </head>
 <body>
     <script>
-        const nums = [1,2];
-        const k = 5
+       const nums = [0,0,1,1,1,2,2,3,3,4];
 
-        const rotateArray = (nums, k) => {
-            const n = nums.length
-            k = k%n
-            const rotate = nums.splice(n - k, k)
-            console.log([...rotate, ...nums])
-
-            // let n=nums.length;
-            // k=k%n;
-            // let start = nums.slice(n-k);
-            // let end = nums.slice(0,n-k);
-            // for(let i=0;i<n;i++){
-            //     if(i<k){
-            //         nums[i] = start[i];
-            //     }
-            //     else{
-            //         nums[i] = end[i-k];
-            //     }
-            // }
-
-            // console.log(nums)
+       const removeDuplicates = (nums) => {
+        let i = 0
+        for(let j = 0; j < nums.length; j++){
+            if(nums[i] !== nums[j]){
+                i++
+                nums[i] = nums[j]
+            }
         }
+        
+        return i + 1
+        
+       }
 
-       rotateArray(nums, k)
+       removeDuplicates(nums)
+
+   
+    
     </script>
 </body>
 </html>

@@ -49,7 +49,7 @@ function sortArray(arr1, arr2) {
             array[j] = array[i];
             array[i] = temp;
         }
-        }g
+        }
     }
     console.log(array)
 }
