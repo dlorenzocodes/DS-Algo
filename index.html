@@ -8,22 +8,32 @@
 </head>
 <body>
     <script>
-       const nums = [1,2,3,4]
+        const nums = [1,2];
+        const k = 5
 
-       const containsDuplicates = nums => {
-            const duplicates = []
-            for( let i = 0; i < nums.length; i++){
-                if(duplicates.includes(nums[i])){
-                    return true
-                } else {
-                    duplicates.push(nums[i])
-                }
-            }
+        const rotateArray = (nums, k) => {
+            const n = nums.length
+            k = k%n
+            const rotate = nums.splice(n - k, k)
+            console.log([...rotate, ...nums])
 
-            return false
-       }
+            // let n=nums.length;
+            // k=k%n;
+            // let start = nums.slice(n-k);
+            // let end = nums.slice(0,n-k);
+            // for(let i=0;i<n;i++){
+            //     if(i<k){
+            //         nums[i] = start[i];
+            //     }
+            //     else{
+            //         nums[i] = end[i-k];
+            //     }
+            // }
 
-       containsDuplicates(nums)
+            // console.log(nums)
+        }
+
+       rotateArray(nums, k)
     </script>
 </body>
 </html>
