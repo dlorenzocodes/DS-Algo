@@ -10,7 +10,7 @@ class HashTable{
         }
         
         this.data[address].push([key, value])
-    }
+    } //O(1)
 
     get(key){
         const address = this._hash(key)
@@ -26,7 +26,7 @@ class HashTable{
         }
 
         return undefined
-    }
+    } //O(1) if no collisions
 
     _hash(key){
         let hash = 0
