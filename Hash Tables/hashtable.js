@@ -10,6 +10,7 @@ class HashTable{
         }
         
         this.data[address].push([key, value])
+        console.log(this.data)
     } //O(1)
 
     get(key){
@@ -37,8 +38,20 @@ class HashTable{
         return hash
     }
 
+    keys(){
+        const arr = this.data
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] !== undefined){
+                console.log(arr[i][0][0])
+            }
+        }
+    }
+
 }
 
 const myHashTable = new HashTable(50)
 myHashTable.set('grapes', 10000)
+myHashTable.set('apples', 54)
+myHashTable.set('oranges', 2)
+myHashTable.keys()
 myHashTable.get('grapes')

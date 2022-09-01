@@ -8,24 +8,28 @@
 </head>
 <body>
     <script>
-       const nums = [0,0,1,1,1,2,2,3,3,4];
+  
+        const array = [2,5,1,2,3,5,1,2,4]
 
-       const removeDuplicates = (nums) => {
-        let i = 0
-        for(let j = 0; j < nums.length; j++){
-            if(nums[i] !== nums[j]){
-                i++
-                nums[i] = nums[j]
+        function firstRecurringCharacter3(array){
+            for(let i = 0; i < array.length; i++){
+                for( let j = i + 1; j < array.length; j++){
+                    if(array[i] === array[j]){
+                        console.log(array[i])
+                        return
+                    }
+
+                    if(array[j] === array[j + 1]){
+                        console.log(array[j])
+                        return
+                    }
+                }
             }
+
+            return undefined
         }
-        
-        return i + 1
-        
-       }
 
-       removeDuplicates(nums)
-
-   
+        firstRecurringCharacter3(array)
     
     </script>
 </body>
