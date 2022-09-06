@@ -8,24 +8,21 @@
 </head>
 <body>
     <script>
-        const nums = [1,0,1,1]
-        const k = 1
+        const nums = [0,2]
+        
+        const missingNumber = nums =>{
+            const mySet = new Set(nums)
 
-        const containsNearbyDuplicate = (nums, k) => {
-            let map ={}
-
-            for(let i = 0; i < nums.length; i++){
-                if(map[nums[i]] !== undefined && (i - map[nums[i]]) <= k){
-                    return true
+            for(let j = 0; j <= nums.length; j++){
+                if(!mySet.has(j)){
+                    return j
                 }
-
-                map[nums[i]] = i
             }
 
-            return true
+            return j
         }
 
-        containsNearbyDuplicate(nums, k)
+        missingNumber(nums)
     </script>
 </body>
 </html>
