@@ -41,6 +41,18 @@
                 this.length++
             }
 
+            printList(){
+                let listValues = []
+                let currentNode = this.head
+                let counter = 0
+                while(counter <= this.length){
+                    listValues.push(currentNode.value)
+                    currentNode = currentNode.next
+                    counter++
+                }
+                console.log(listValues)
+            }
+
             traverse(index){
                 let counter = 0
                 let currentNode = this.head
@@ -61,6 +73,27 @@
                 const holdingPointer = leader.next
                 leader.next = newElement
                 newElement.next = holdingPointer
+                this.printList()
+            }
+
+            remove(index){
+                if(index <= 0){
+                    this.length--
+                    return this.head = this.head.next
+                }
+
+                const prev = this.traverse(index - 1)
+                const unwanted = prev.next
+
+
+                if(index >= this.length){
+                    unwanted.next = null
+                    this.tail = prev
+                } else{
+                    prev.next = unwanted.next
+                }
+                
+                this.length--
             }
         }
 
@@ -70,7 +103,8 @@
         myLinkedList.prepend('kiwi')
         myLinkedList.prepend('mango')
         myLinkedList.insert(1, 'strawberry')
-        console.log(myLinkedList)
+        myLinkedList.remove(4)
+        myLinkedList.printList()
 
     </script>
 </body>
