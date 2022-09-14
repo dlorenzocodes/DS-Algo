@@ -13,14 +13,16 @@
             constructor(value){
                 this.value = value
                 this.next = null
+                this.prev = null
             }
         }
 
-        class LinkedList {
+        class DoublyLinkedList {
             constructor(value){
                 this.head = {
                     value,
-                    next: null
+                    next: null,
+                    prev: null
                 }
 
                 this.tail = this.head
@@ -28,15 +30,20 @@
             }
 
             append(value){
-                const nextNode = new newNode(value)
-                this.tail.next = nextNode
-                this.tail = nextNode
+                const node = new newNode(value)
+                node.prev = this.tail
+
+                this.tail.next = node
+                this.tail = node
                 this.length++
             }
 
+
             prepend(value){
                 const newHead = new newNode(value)
+                this.head.prev = newHead
                 newHead.next = this.head
+
                 this.head = newHead
                 this.length++
             }
@@ -70,41 +77,48 @@
 
                 const newElement = new newNode(value)
                 const leader = this.traverse(index - 1)
-                const holdingPointer = leader.next
+                let follower = leader.next
                 leader.next = newElement
-                newElement.next = holdingPointer
-                this.printList()
+                newElement.next = follower
+                newElement.prev = leader
+                follower.prev = newElement
             }
 
             remove(index){
                 if(index <= 0){
                     this.length--
-                    return this.head = this.head.next
+                    const newHead = this.head.next
+                    this.head = newHead
+                    newHead.prev = null
+                    return
                 }
 
                 const prev = this.traverse(index - 1)
                 const unwanted = prev.next
+                const aft = unwanted.next
 
 
                 if(index >= this.length){
-                    unwanted.next = null
+                    prev.next = null
                     this.tail = prev
                 } else{
                     prev.next = unwanted.next
+                    aft.prev = unwanted.prev
                 }
                 
                 this.length--
             }
         }
 
-        const myLinkedList = new LinkedList('apples');
+        const myLinkedList = new DoublyLinkedList('apples');
         myLinkedList.append('grapes')
-        myLinkedList.append('pears')
+        // myLinkedList.append('pears')
         myLinkedList.prepend('kiwi')
         myLinkedList.prepend('mango')
-        myLinkedList.insert(1, 'strawberry')
+        myLinkedList.insert(2, 'pears')
         myLinkedList.remove(4)
         myLinkedList.printList()
+        console.log(myLinkedList)
 
     </script>
 </body>
