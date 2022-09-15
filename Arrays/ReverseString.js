@@ -16,3 +16,22 @@ function reverse2(str){
 }
 
 const reverse3 = str => str.split('').reverse().join('')
+
+const arr = [1,2,3,4]
+
+const reverseArray = arr => {
+    let first = 0
+    let last = arr.length - 1
+
+    while( first < last ){
+        const firstElement = arr[first]
+        const lastElement = arr[last]
+        arr[last] = firstElement
+        arr[first] = lastElement
+        first++
+        last--
+    }
+    console.log(arr)
+}
+
+reverseArray(arr)

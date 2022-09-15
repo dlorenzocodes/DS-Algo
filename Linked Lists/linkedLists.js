@@ -101,6 +101,24 @@ class LinkedList {
         
         this.length--
     }
+
+    reverse(){
+        let first = this.head
+        let second = first.next
+        this.tail = this.head
+
+        while(second){
+            const temp = second.next
+            second.next = first
+            first = second
+            second = temp
+        }
+
+        
+        this.head.next = null
+        this.head = first
+        console.log(this)
+    }
 }
 
 const myLinkedList = new LinkedList('apples');
