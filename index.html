@@ -47,29 +47,51 @@
 
 
         const getIntersectionNode = (headA, headB) => {
-            let pointerA = listA
-            let pointerB = listB
             
+            // find length of A
+            let lengthA = 0
+            let tempA = headA
+            while(tempA){
+                lengthA++
+                tempA = tempA.next
+            }
 
-            while(pointerA !== pointerB){
-                pointerA = pointerA.next
-                pointerB = pointerB.next
+            // find length of B
+            let lengthB = 0
+            let tempB = headB
+            while(tempB){
+                lengthB++
+                tempB = tempB.next
+            }
 
-                if(pointerA === pointerB){
-                    console.log(pointerA)
-                    return pointerA
+            let diff = Math.abs(lengthA - lengthB)
+
+            tempA = headA
+            tempB = headB
+
+            if(lengthA > lengthB){
+                while(diff-- > 0){
+                    tempA = tempA.next
                 }
-
-                if(pointerA === null){
-                    pointerA = listB
-                }
-
-                if(pointerB === null){
-                    pointerB = listA
+            }else{
+                while(diff-- > 0){
+                    tempB = tempB.next
                 }
             }
 
-            return pointerA
+
+            // Check for equality
+            while(tempA !== tempB){
+                tempA = tempA.next
+                tempB = tempB.next
+
+                if(tempA == null || tempB == null){
+                    console.log(null)
+                    return null
+                }
+            }
+
+            console.log(tempA)
         }
 
         getIntersectionNode(listA, listB)
